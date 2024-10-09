@@ -23,15 +23,12 @@ public class TestBase extends TestData{
         Configuration.browserSize = "2560x1440";
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
                 "enableVideo", true
         ));
-
         Configuration.browserCapabilities = capabilities;
     }
 
@@ -39,5 +36,4 @@ public class TestBase extends TestData{
     void addListener() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
-
 }

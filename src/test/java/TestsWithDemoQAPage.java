@@ -19,6 +19,7 @@ public class TestsWithDemoQAPage extends TestBase {
     void formVerification() {
         step("Test train", () -> {
             registrationPage.openPage()
+                    .killReclam()
                     .setFirstName(firstName)
                     .setLastName(lastName)
                     .setEmail(userEmail)
