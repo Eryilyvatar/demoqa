@@ -17,7 +17,6 @@ public class TestsWithDemoQAPage extends TestBase {
     @Link(value = "DemoQA", url = "https://demoqa.com")
     @DisplayName("Проверка заполнения формы demoqa")
     void formVerification() {
-        step("Test train", () -> {
             registrationPage.openPage()
                     .killReclam()
                     .setFirstName(firstName)
@@ -43,6 +42,5 @@ public class TestsWithDemoQAPage extends TestBase {
                     .verifyResultData("Picture", pictureUrl)
                     .verifyResultData("Address", userAddress)
                     .verifyResultData("State and City", userState + " " + userCity);
-        });
     }
 }
