@@ -1,12 +1,14 @@
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.BeforeAll;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import pages.RegistrationPage;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
+
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 
 public class TestBase extends TestData{
@@ -14,6 +16,9 @@ public class TestBase extends TestData{
 
     @BeforeAll
     static void beforeAll() {
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browser = "chrome";
         Configuration.browserVersion = "100.0";
@@ -27,6 +32,11 @@ public class TestBase extends TestData{
         ));
 
         Configuration.browserCapabilities = capabilities;
+    }
+
+    @BeforeEach
+    void addListener() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
 
 }
