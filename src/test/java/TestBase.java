@@ -8,6 +8,8 @@ import pages.RegistrationPage;
 
 import java.util.Map;
 
+import static com.codeborne.selenide.Selenide.executeJavaScript;
+
 
 public class TestBase extends TestData{
     RegistrationPage registrationPage = new RegistrationPage();
@@ -20,6 +22,9 @@ public class TestBase extends TestData{
         Configuration.browserVersion = "100.0";
         Configuration.browserSize = "2560x1440";
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
