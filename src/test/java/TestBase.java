@@ -8,16 +8,12 @@ import pages.RegistrationPage;
 
 import java.util.Map;
 
-import static com.codeborne.selenide.Selenide.executeJavaScript;
-
 
 public class TestBase extends TestData{
     RegistrationPage registrationPage = new RegistrationPage();
 
     @BeforeAll
     static void beforeAll() {
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
 
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browser = "chrome";

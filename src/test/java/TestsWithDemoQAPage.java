@@ -2,6 +2,7 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.Selenide.executeJavaScript;
 import static io.qameta.allure.Allure.step;
 
 
@@ -16,7 +17,10 @@ public class TestsWithDemoQAPage extends TestBase {
     @Link(value = "DemoQA", url = "https://demoqa.com")
     @DisplayName("Проверка заполнения формы demoqa")
     void formVerification() {
-
+        step("Kill advertising", () -> {
+            executeJavaScript("$('#fixedban').remove()");
+            executeJavaScript("$('footer').remove()");
+        });
         step("Test train", () -> {
             registrationPage.openPage()
                     .setFirstName(firstName)
