@@ -3,7 +3,7 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class RegistrationWithDemoQAPage extends TestBase {
+public class RegistrationFormWithRandom extends TestBase {
 
     @Test
     @Feature("Заполнение формы demoqa")
@@ -12,9 +12,8 @@ public class RegistrationWithDemoQAPage extends TestBase {
     @Severity(SeverityLevel.BLOCKER)
     @Link(value = "DemoQA", url = "https://demoqa.com")
     @DisplayName("Проверка заполнения формы demoqa")
-    void formVerification() {
+    void successfulRegistrationTest() {
         registrationPage.openPage()
-                .killReclam()
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setEmail(userEmail)
@@ -38,5 +37,16 @@ public class RegistrationWithDemoQAPage extends TestBase {
                 .verifyResultData("Picture", pictureUrl)
                 .verifyResultData("Address", userAddress)
                 .verifyResultData("State and City", userState + " " + userCity);
+    }
+
+    @Test
+    @Feature("Открытие формы demoqa")
+    @Story("Форма demoqa")
+    @Owner("teslyukvv")
+    @Severity(SeverityLevel.BLOCKER)
+    @Link(value = "DemoQA", url = "https://demoqa.com")
+    @DisplayName("Проверка что открывается форма demoqa")
+    void openRegistrationPage() {
+        registrationPage.openPage();
     }
 }
