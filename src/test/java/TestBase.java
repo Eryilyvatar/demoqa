@@ -20,7 +20,7 @@ public class TestBase extends TestData{
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserSize = System.getProperty("permission","2560x1440");
-        Configuration.browserVersion = System.getProperty("version","100.0");
+//        Configuration.browserVersion = System.getProperty("version","100.0");
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
 
 
